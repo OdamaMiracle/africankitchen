@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and SEO setup -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AFRICAN KITCHEN serves authentic Nigerian meals, comforting classics, and vibrant West African flavors in a warm setting."
+    />
+    <title>AFRICAN KITCHEN | Nigerian Dining</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["Restaurant", "LocalBusiness"],
+        "name": "AFRICAN KITCHEN",
+        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+        "servesCuisine": ["Nigerian Cuisine", "African Fusion", "Traditional Meals"],
+        "priceRange": "₦₦",
+        "telephone": "+234 703 350 3637",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Behind high court",
+          "addressLocality": "Central Business District",
+          "addressRegion": "Abuja",
+          "postalCode": "00000",
+          "addressCountry": "Nigeria"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00 am",
+            "closes": "8:00 pm"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "10:00 am",
+            "closes": "6:00pm"
+          }
+        ],
+        "acceptsReservations": true
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Sticky top navigation -->
+    <header class="topbar">
+      <nav class="nav container" aria-label="Main navigation">
+        <div class="brand" aria-label="AFRICAN KITCHEN home">
+          <div class="brand-mark">B</div>
+          <div>
+            <p class="eyebrow">Seasonal kitchen</p>
+            <h1>AFRICAN KITCHEN</h1>
+          </div>
+        </div>
+
+        <div class="nav-links" aria-label="Page sections">
+          <a href="#menu">Menu</a>
+          <a href="#story">Story</a>
+          <a href="#reservation">Reservations</a>
+        </div>
+
+        <button class="nav-order" id="cartShortcut" type="button" aria-label="Open cart">
+          <span>Direct Order</span>
+          <em id="navCartCount">0</em>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero banner -->
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Crafted with heart</p>
+            <h2>Authentic Nigerian flavors, slow evenings, and a table worth lingering over.</h2>
+            <p class="hero-text">
+              Hearty soups, smoky grills, and family-style favorites prepared with bold spice,
+              rich tradition, and warm hospitality.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#menu" class="primary-btn">Browse the menu</a>
+              <a href="#reservation" class="secondary-btn">Reserve a table</a>
+            </div>
+
+            <ul class="hero-meta" aria-label="Restaurant highlights">
+              <li>Locally sourced</li>
+              <li>Chef's tasting</li>
+              <li>Pick-up ready</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Featured dish image">
+            <div class="feature-card">
+              <img
+                src="https://media.istockphoto.com/id/1265268905/photo/barbecue-chicken-jollof-rice.jpg?s=1024x1024&w=is&k=20&c=PraE-2TWIdYnPXZfJzGKEOhzzrwLbCnAW7gsGR_9LVY="
+                alt="Signature African kitchen dish"
+              />
+              <div class="feature-badge">
+                <span>Chef's pick</span>
+                <strong>Jollof & Chicken</strong>
+              </div>
+            </div>
+            <div class="rating-pill">
+              <span>★ 4.9</span>
+              <small>From 1,284 guests</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu and order cart -->
+      <section id="menu" class="menu-section container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Our favorites</p>
+            <h3>Beloved Nigerian classics</h3>
+          </div>
+          <p>Choose your craving, then order directly for the best value.</p>
+        </div>
+
+        <div class="menu-layout">
+          <div class="menu-panel">
+            <div class="filter-bar" id="categoryFilters" aria-label="Filter menu categories"></div>
+            <div id="menuList" class="menu-grid" aria-live="polite"></div>
+          </div>
+
+          <aside class="cart-panel" aria-label="Order summary">
+            <div class="cart-sticky">
+              <div class="cart-header">
+                <h4>Your Order</h4>
+                <span id="cartItemCount">0 items</span>
+              </div>
+
+              <div id="cartItems" class="cart-items" aria-live="polite"></div>
+
+              <div class="totals">
+                <div class="total-row subtotal-row">
+                  <span>Subtotal</span>
+                  <strong id="subtotal">₦0</strong>
+                </div>
+
+                <div class="compare-box">
+                  <div class="compare-row">
+                    <span>App Total</span>
+                    <strong id="appTotal">₦0</strong>
+                  </div>
+                  <div class="compare-row">
+                    <span>Our Direct Total</span>
+                    <strong id="directTotal">₦0</strong>
+                  </div>
+                </div>
+
+                <div id="savingsBadge" class="savings-badge">🎉 You are saving ₦0 by ordering direct!</div>
+              </div>
+
+              <button class="checkout-btn" type="button">Place Direct Order</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Brand story strip -->
+      <section id="story" class="story-strip">
+        <div class="container story-inner">
+          <div>
+            <p class="eyebrow">Why guests stay</p>
+            <h3>Comfort-first dining, rooted in Nigerian tradition.</h3>
+          </div>
+          <div class="story-points">
+            <span>Freshly pounded ingredients</span>
+            <span>Slow-cooked soups</span>
+            <span>Traditional herbs & spice</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conversion-focused trust signals -->
+      <section class="trust-section container" aria-label="Why customers choose us">
+        <div class="feature-banner">
+          <div>
+            <p class="eyebrow">Ready to order?</p>
+            <h3>Freshly cooked, packed with flavor, and ready when you are.</h3>
+          </div>
+          <div class="feature-actions">
+            <a href="#menu" class="primary-btn">Order now</a>
+            <a href="tel:+2347033503637" class="secondary-btn">Call to order</a>
+          </div>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust-item">
+            <strong>1,284+</strong>
+            <span>happy guests served</span>
+          </div>
+          <div class="trust-item">
+            <strong>30 min</strong>
+            <span>average prep time</span>
+          </div>
+          <div class="trust-item">
+            <strong>4.9/5</strong>
+            <span>customer rating</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customer reviews -->
+      <section class="testimonials-section">
+        <div class="container">
+          <div class="section-heading testimonials-heading">
+            <div>
+              <p class="eyebrow">Guest reviews</p>
+              <h3>What people are saying</h3>
+            </div>
+          </div>
+
+          <div class="testimonial-grid">
+            <article class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                “The jollof rice tasted exactly like a family Sunday feast. Rich, smoky, and truly
+                comforting.”
+              </p>
+              <div class="reviewer">
+                <strong>Amaka O.</strong>
+                <span>Abuja customer</span>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                “The suya platter was spicy, juicy, and full of flavor. The delivery was quick and the
+                packaging was neat.”
+              </p>
+              <div class="reviewer">
+                <strong>David A.</strong>
+                <span>Local regular</span>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                “Fresh ingredients, warm service, and authentic Nigerian meals that feel like home.”
+              </p>
+              <div class="reviewer">
+                <strong>Ruth E.</strong>
+                <span>Family dinner</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reservation form -->
+      <section id="reservation" class="reservation-section">
+        <div class="container reservation-container">
+          <div class="reservation-copy">
+            <p class="eyebrow">Reserve a table</p>
+            <h3>Set a table for your next celebration.</h3>
+            <p>
+              Whether it’s a cozy date night or a lively family feast, we’ll make every table feel
+              warm, welcoming, and unforgettable.
+            </p>
+          </div>
+
+          <form id="reservationForm" class="reservation-form" novalidate>
+            <div class="field-grid">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+
+              <label>
+                <span>Phone</span>
+                <input type="tel" name="phone" placeholder="(+234) 7033503637" required />
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label>
+                <span>Date</span>
+                <input type="date" name="date" required />
+              </label>
+
+              <label>
+                <span>Time</span>
+                <input type="time" name="time" min="11:00" max="22:00" required />
+              </label>
+            </div>
+
+            <label>
+              <span>Guests</span>
+              <select name="guests" required>
+                <option value="">Select guests</option>
+                <option value="2">2 guests</option>
+                <option value="4">4 guests</option>
+                <option value="6">6 guests</option>
+                <option value="8">8 guests</option>
+              </select>
+            </label>
+
+            <button type="submit" class="primary-btn submit-btn">Reserve my table</button>
+            <div id="reservationMessage" class="reservation-message" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="brand footer-brand" aria-label="AFRICAN KITCHEN home">
+            <div class="brand-mark">B</div>
+            <div>
+              <p class="eyebrow">AFRICAN KITCHEN</p>
+              <h4>Home of authentic Nigerian taste</h4>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-list">
+            <li><a href="tel:+2347033503637">+234 703 350 3637</a></li>
+            <li>Behind high court, Abuja</li>
+            <li><a href="mailto:hello@africankitchen.ng">hello@africankitchen.ng</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Hours</h4>
+          <ul class="footer-list">
+            <li>Mon–Fri: 10:00 AM – 8:00 PM</li>
+            <li>Sat–Sun: 10:00 AM – 6:00 PM</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Follow</h4>
+          <ul class="footer-list">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#reservation">Reservations</a></li>
+            <li><a href="tel:+2347033503637">Direct order</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>
